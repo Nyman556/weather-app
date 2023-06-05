@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100;300;400;700&display=swap");
 :root {
+	--main: #0b131e;
+	--highlight: #0af;
+	--text-color: #f0f1f1;
 }
 
 html,
@@ -10,12 +13,9 @@ body {
 	color: white;
 }
 body {
-	background: rgb(63, 94, 251);
-	background: radial-gradient(
-		circle,
-		rgba(63, 94, 251, 1) 0%,
-		rgba(252, 70, 107, 1) 100%
-	);
+	background-color: #0093e9;
+	background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -26,16 +26,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid red;
 }
 
-main {
-	backdrop-filter: blur(16px) saturate(180%);
-	-webkit-backdrop-filter: blur(16px) saturate(180%);
-	background-color: rgba(17, 25, 40, 0.75);
-	border-radius: 12px;
-	border: 1px solid rgba(255, 255, 255, 0.125);
-}
 #main-day-data {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -47,8 +39,64 @@ main {
 #main-day-data :nth-child(even) {
 	justify-self: end;
 }
+.card {
+	backdrop-filter: blur(16px) saturate(180%);
+	-webkit-backdrop-filter: blur(16px) saturate(180%);
+	background-color: rgba(11, 19, 30, 0.75);
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.125);
+}
 
 .sub-info {
 	font-size: 16px;
 	font-weight: 100;
+}
+#main-day-misc-info {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-auto-columns: 1fr;
+	gap: 10px 10px;
+	grid-auto-flow: row;
+	grid-template-areas:
+		"uv-index wind sunrise sunrise"
+		"humidity visibility sunset sunset"
+		". . . .";
+	padding-top: 10px;
+}
+#main-day-misc-info * {
+	padding: 6px;
+	padding-top: 3px;
+}
+
+#uv-index {
+	width: 10rem;
+	height: 8rem;
+	grid-area: uv-index;
+}
+
+#wind {
+	grid-area: wind;
+}
+
+#sunrise {
+	grid-area: sunrise;
+}
+
+#humidity {
+	grid-area: humidity;
+}
+
+#visibility {
+	grid-area: visibility;
+}
+
+#sunset {
+	grid-area: sunset;
+}
+
+.misc-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
