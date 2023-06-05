@@ -13,7 +13,7 @@
 	<body>
 		<div id="main-wrapper">
 			<main>
-				<div id="main-day-data">
+				<div class="card" id="main-day-data">
 					<div id="main-day-location">
 						<h2>Växjö</h2>
 						<p class="sub-info">Kronoberg, Sweden</p>
@@ -27,9 +27,31 @@
 						<p id="main-day-degree">18°</p>
 					</div>
 					<div id="main-day-info">
-						<p class="sub-info">Chance Of Rain: D%</p>
+						<p>Chance Of Rain: D%</p>
 						<p class="sub-info">Slightly Cloudy</p>
 					</div>
+				</div>
+				<div id="main-day-misc-info">
+					<div class="card" id="uv-index">
+						<div class="misc-title">UV-I <i data-feather="sun"></i></div>
+						<span class="misc-data"></span>
+					</div>
+					<div class="card" id="wind">
+						<div class="misc-title">Wind <i data-feather="wind"></i></div>
+						<span class="misc-data"></span>
+					</div>
+					<div class="card" id="humidity">
+						<div class="misc-title">
+							Humidity <i data-feather="droplet"></i>
+						</div>
+						<span class="misc-data"></span>
+					</div>
+					<div class="card" id="visibility">
+						<div class="misc-title">Visibility <i data-feather="eye"></i></div>
+						<span class="misc-data"></span>
+					</div>
+					<div class="card" id="sunrise">Sunrise</div>
+					<div class="card" id="sunset">Sunset</div>
 				</div>
 			</main>
 		</div>
