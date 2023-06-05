@@ -11,15 +11,17 @@
 		<script src="https://unpkg.com/feather-icons"></script>
 	</head>
 	<body>
+		<header></header>
 		<div id="main-wrapper">
 			<main>
 				<div class="card" id="main-day-data">
 					<div id="main-day-location">
 						<h2>Växjö</h2>
 						<p class="sub-info">Kronoberg, Sweden</p>
+						<span id="update-timestamp">Last Updated: 21:04</span>
 					</div>
 					<div id="main-day-time">
-						<p>22:08</p>
+						<p id="time"></p>
 						<p class="sub-info">Sunday</p>
 					</div>
 					<div id="main-day-weather">
@@ -29,8 +31,10 @@
 					<div id="main-day-info"></div>
 				</div>
 				<div id="main-day-misc-info">
-					<div class="card" id="uv-index">
-						<div class="misc-title">Max/Min <i data-feather="sun"></i></div>
+					<div class="card" id="pressure">
+						<div class="misc-title">
+							Pressure <i data-feather="umbrella"></i>
+						</div>
 						<span class="misc-data"></span>
 					</div>
 					<div class="card" id="wind">
@@ -49,9 +53,11 @@
 					</div>
 					<div class="card" id="sunrise">
 						<div class="misc-title">Sunrise <i data-feather="sunrise"></i></div>
+						<p class="set-data"></p>
 					</div>
 					<div class="card" id="sunset">
-						<div class="misc-title">Sunrise <i data-feather="sunset"></i></div>
+						<div class="misc-title">Sunset <i data-feather="sunset"></i></div>
+						<p class="set-data"></p>
 					</div>
 				</div>
 			</main>
