@@ -28,17 +28,36 @@ let weekday = currentDate.getDay();
 let date;
 let clockTime;
 
-fetch(
-	`http://api.openweathermap.org/data/2.5/weather?q=Växjö&appid=${key}&units=metric`
-)
-	.then((response) => response.json())
-	.then((weatherData) => {
-		renderWheaterData(weatherData);
-	});
+function fetchWeatherData() {
+	fetch(
+		`http://api.openweathermap.org/data/2.5/weather?q=Växjö&appid=${key}&units=metric`
+	)
+		.then((response) => response.json())
+		.then((weatherData) => {
+			renderWeaterData(weatherData);
+		});
 
-function renderWheaterData(data) {
+	// fetch sunrise/sunset
+	fetch(
+		"https://api.sunrise-sunset.org/json?lat=56.87767&lng=14.80906&date=today"
+	)
+		.then((response) => response.json())
+		.then((setDataFetched) => {
+			setData[0].innerHTML = setDataFetched.results.sunrise;
+			setData[1].innerHTML = setDataFetched.results.sunset;
+		});
+}
+
+function renderWeaterData(data) {
+	//temp section
 	mainWeaterImg.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-	mainDayDegree.innerHTML = data.main.temp + "°";
+	mainDayDegree.innerHTML = Math.round(data.main.temp) + "°";
+	mainDaymaxMix.innerHTML =
+		Math.round(data.main.temp_max) +
+		"°" +
+		" | " +
+		Math.floor(data.main.temp_min) +
+		"°";
 
 	//Description section
 	let description = document.createElement("p");
@@ -46,17 +65,13 @@ function renderWheaterData(data) {
 	description.innerHTML = data.weather[0].main;
 	subDesciption.innerHTML = data.weather[0].description;
 	subDesciption.classList.add("sub-info");
+	mainDayInfo.innerHTML = "";
 	mainDayInfo.append(description, subDesciption);
 
+	// Timestamp
 	timestamp.innerHTML = "Last Updated: " + getDate();
-	mainDaymaxMix.innerHTML =
-		Math.round(data.main.temp_max) +
-		"°" +
-		" | " +
-		Math.round(data.main.temp_min) +
-		"°";
 
-	// gets clock and date once here then in interval
+	// updates time and date once here then in interval
 	currentTime.innerHTML = getDate();
 	day.innerHTML = getDate(1) + " | " + Weekdays[weekday];
 
@@ -66,15 +81,6 @@ function renderWheaterData(data) {
 	miscData[2].innerHTML = data.main.humidity + "%";
 	miscData[3].innerHTML = data.visibility / 1000 + " km";
 }
-// Eftersom gratisvarianten av OpenWeather inte ger sol-upgång/nedgång så hämtar jag det från en annan API
-fetch(
-	"https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&date=today"
-)
-	.then((response) => response.json())
-	.then((setDataFetched) => {
-		setData[0].innerHTML = setDataFetched.results.sunrise;
-		setData[1].innerHTML = setDataFetched.results.sunset;
-	});
 
 // function to get date or clock depending on if there is an input
 function getDate(x) {
@@ -104,7 +110,16 @@ function getDate(x) {
 }
 
 // Intervals
+//Updates time and date every second
 setInterval(() => {
 	currentTime.innerHTML = getDate();
 	day.innerHTML = getDate(1) + " | " + Weekdays[weekday];
 }, 1000);
+
+// updates all data every 15 min
+setInterval(() => {
+	fetchWeatherData();
+}, 1000 * 60 * 15);
+
+// updates all data on load
+fetchWeatherData();
