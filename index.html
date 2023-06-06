@@ -14,7 +14,7 @@
 		<header></header>
 		<div id="main-wrapper">
 			<main>
-				<div class="card" id="main-day-data">
+				<div class="card slide-in-top" id="main-day-data">
 					<div id="main-day-location">
 						<h2>Växjö</h2>
 						<p class="sub-info">Kronoberg, Sweden</p>
@@ -22,40 +22,43 @@
 					</div>
 					<div id="main-day-time">
 						<p id="time"></p>
-						<p class="sub-info">Sunday</p>
+						<p class="sub-info" id="day"></p>
 					</div>
 					<div id="main-day-weather">
 						<img id="main-weather-img" src="#" alt="" />
-						<p id="main-day-degree">18°</p>
+						<div class="temp-wrapper">
+							<p id="main-day-degree">18°</p>
+							<p class="sub-info" id="max-min">21° | 10°</p>
+						</div>
 					</div>
 					<div id="main-day-info"></div>
 				</div>
 				<div id="main-day-misc-info">
-					<div class="card" id="pressure">
+					<div class="card slide-in-left" id="pressure">
 						<div class="misc-title">
 							Pressure <i data-feather="umbrella"></i>
 						</div>
 						<span class="misc-data"></span>
 					</div>
-					<div class="card" id="wind">
+					<div class="card slide-in-right" id="wind">
 						<div class="misc-title">Wind <i data-feather="wind"></i></div>
 						<span class="misc-data"></span>
 					</div>
-					<div class="card" id="humidity">
+					<div class="card slide-in-left" id="humidity">
 						<div class="misc-title">
 							Humidity <i data-feather="droplet"></i>
 						</div>
 						<span class="misc-data"></span>
 					</div>
-					<div class="card" id="visibility">
+					<div class="card slide-in-left" id="visibility">
 						<div class="misc-title">Visibility <i data-feather="eye"></i></div>
 						<span class="misc-data"></span>
 					</div>
-					<div class="card" id="sunrise">
+					<div class="card slide-in-right-delayed" id="sunrise">
 						<div class="misc-title">Sunrise <i data-feather="sunrise"></i></div>
 						<p class="set-data"></p>
 					</div>
-					<div class="card" id="sunset">
+					<div class="card slide-in-right-delayed" id="sunset">
 						<div class="misc-title">Sunset <i data-feather="sunset"></i></div>
 						<p class="set-data"></p>
 					</div>
