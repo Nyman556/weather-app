@@ -4,7 +4,7 @@
 	--highlight: #0af;
 	--text-color: #f0f1f1;
 }
-/*Base element changes*/
+/*Element ändringar*/
 html,
 body {
 	width: 100%;
@@ -20,7 +20,7 @@ body {
 	justify-content: center;
 }
 
-/*General classes*/
+/*Generella klasser*/
 .card {
 	color: var(--text-color);
 	backdrop-filter: blur(16px) saturate(180%);
@@ -51,7 +51,7 @@ body {
 	font-weight: 100;
 }
 
-/*ID's in order*/
+/*ID's i ordning*/
 #main-wrapper {
 	height: 100%;
 	width: 50%;
@@ -149,7 +149,7 @@ body {
 	transition: all 0.25s ease-in-out;
 }
 
-/*Animation classes*/
+/*Animation klasser*/
 .slide-in-top {
 	-webkit-animation: slide-in-top 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 	animation: slide-in-top 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;

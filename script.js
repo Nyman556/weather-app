@@ -1,7 +1,7 @@
-// refreshes Icons
+// Updaterar Ikoner
 feather.replace();
 
-// DOM objects
+// DOM object
 const timestamp = document.getElementById("update-timestamp");
 const currentTime = document.getElementById("time");
 const day = document.getElementById("day");
@@ -12,7 +12,7 @@ const mainDayInfo = document.getElementById("main-day-info");
 const miscData = document.querySelectorAll(".misc-data");
 const setData = document.querySelectorAll(".set-data");
 
-// variables
+// variabler
 let Weekdays = [
 	"Sunday",
 	"Monday",
@@ -49,7 +49,7 @@ function fetchWeatherData() {
 }
 
 function renderWeaterData(data) {
-	//temp section
+	//temp sektionen
 	mainWeaterImg.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 	mainDayDegree.innerHTML = Math.round(data.main.temp) + "°";
 	mainDaymaxMix.innerHTML =
@@ -59,7 +59,7 @@ function renderWeaterData(data) {
 		Math.floor(data.main.temp_min) +
 		"°";
 
-	//Description section
+	//Description sektionen
 	let description = document.createElement("p");
 	let subDesciption = document.createElement("p");
 	description.innerHTML = data.weather[0].main;
@@ -71,7 +71,7 @@ function renderWeaterData(data) {
 	// Timestamp
 	timestamp.innerHTML = "Last Updated: " + getDate();
 
-	// updates time and date once here then in interval
+	// Updaterar tid och datum en gång här -> sen i intervaller
 	currentTime.innerHTML = getDate();
 	day.innerHTML = getDate(1) + " | " + Weekdays[weekday];
 
@@ -81,8 +81,7 @@ function renderWeaterData(data) {
 	miscData[2].innerHTML = data.main.humidity + "%";
 	miscData[3].innerHTML = data.visibility / 1000 + " km";
 }
-
-// function to get date or clock depending on if there is an input
+// funktion fär att hämta datum eller klocktid beroende på input
 function getDate(x) {
 	let date = new Date();
 	if (x) {
@@ -110,16 +109,16 @@ function getDate(x) {
 }
 
 // Intervals
-//Updates time and date every second
+//Updaterar tid och datum varje sekund
 setInterval(() => {
 	currentTime.innerHTML = getDate();
 	day.innerHTML = getDate(1) + " | " + Weekdays[weekday];
 }, 1000);
 
-// updates all data every 15 min
+// Updaterar all data varje 15 min
 setInterval(() => {
 	fetchWeatherData();
 }, 1000 * 60 * 15);
 
-// updates all data on load
+// updates all data vid laddning
 fetchWeatherData();
